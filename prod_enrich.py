@@ -83,7 +83,7 @@ def enrich_product(product_name, brand):
 
 
 # Load scraped data
-df = pd.read_csv("qudo_skincare_products7.csv")
+df = pd.read_csv("day1_dataset.csv")
 
 # Limit to first 10 products
 df = df.head(10)
