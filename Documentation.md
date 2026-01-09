@@ -4,7 +4,7 @@
 
 • Script: scrapy.py
 
-• Tools used: python, pandas, BeautifulSoup, lxml, requests, re
+• Tools used: python, pandas, BeautifulSoup, lxml, requests, re, Google cloud
 
 • Issues encountered:
 
