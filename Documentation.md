@@ -30,8 +30,11 @@ For each selected product, at least one API call was made using the product name
 The API was used to retrieve:
 
   • Manufacturer's official product pages.
+  
   • Brand website confirmations.
+  
   • Additional product descriptions from external sources.
+  
   • Identifiers such as SKU, barcode, or country of origin when available.
 
 Each API request returned structured metadata including the page title, URL, and snippet, which were stored alongside the original scraped data.
