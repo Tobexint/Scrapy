@@ -28,6 +28,7 @@
 The Google Custom Search json API was used to enrich the scraped skincare product dataset with external information.
 For each selected product, at least one API call was made using the product name and brand as the search query.
 The API was used to retrieve:
+
   • Manufacturer's official product pages.
   • Brand website confirmations.
   • Additional product descriptions from external sources.
@@ -63,6 +64,8 @@ This ensured that enriched data improved that dataset's value without compromisi
 The project was executed in two main phases: web data extraction and external data enrichment. Initially, product data was collected by targeting individual product URLs to ensure accurate extraction of attributes such as product name, brand, category, ingredients, size, and product page URLs. While this approach ensured correctness, it was not scalable. To improve efficiency, the extraction logic was later refactored to target product listings directly from category pages using XPath selectors to identify product card elements and anchor tags. These elements were then parsed with BeautifulSoup to dynamically retrieve the first set of product links, enabling automated and repeatable scraping without manual URL input.
 
 For content extraction on individual product pages, BeautifulSoup was used to parse structured HTML elements such as headings, description blocks, and specification sections. Custom parsing logic was applied to handle semi-structured text patterns (e.g., extracting ingredient lists beginning after “Product contains:” and excluding sections such as “Product effects”). Additional string-processing functions were implemented to derive attributes like product size directly from product names.
+
+Product categorization was determined using a multi signal, rule-based approach designed to maximize reliability in the presence of inconsistent site structure. Rather than relying on a single label, category inference combined breadcrumb hierarchy, URL path patterns, HTML section headers, and keyword analysis of product titles, descriptions, and ingredient lists. When explicit category metadata was unavailable or ambiguous, fallback details such as ingredient and packaging descriptors were applied to determine the most probable product type.
 
 In the enrichment phase, the Google Custom Search JSON API was integrated to retrieve externally validated information, including official product pages, brand website confirmations, and supplementary descriptions. During integration, repeated 401 Unauthorized errors were encountered due to incorrect API key types, project configuration mismatches, and permission restrictions. These issues were resolved by generating a valid Google Cloud API key, enabling the Custom Search API in the correct project, resolving permission issues, and ensuring environment variables do not have hidden characters. Error handling was implemented to log API failures without interrupting the enrichment pipeline.
 
